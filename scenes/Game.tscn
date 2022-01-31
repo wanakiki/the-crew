@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/PlayerHand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/table.jpg" type="Texture" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://scenes/UserInfo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/GUI.gd" type="Script" id=5]
+[ext_resource path="res://scenes/PublicCards.tscn" type="PackedScene" id=6]
+
+[node name="Table" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BackGround" type="Sprite" parent="."]
+position = Vector2( 459, 414 )
+scale = Vector2( 2.61563, 2.1339 )
+texture = ExtResource( 2 )
+
+[node name="PlayerHand" parent="." instance=ExtResource( 1 )]
+position = Vector2( 658, 652 )
+
+[node name="PublicCards" parent="." instance=ExtResource( 6 )]
+position = Vector2( 486, 364 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="SendCardButton" type="Button" parent="GUI"]
+anchor_left = 0.244
+anchor_top = 0.686
+anchor_right = 0.244
+anchor_bottom = 0.686
+margin_left = 111.144
+margin_top = 8.15198
+margin_right = 182.144
+margin_bottom = 28.152
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+text = "SendCard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintButton" type="Button" parent="GUI"]
+anchor_left = 0.385
+anchor_top = 0.681
+anchor_right = 0.385
+anchor_bottom = 0.681
+margin_left = 69.76
+margin_top = 11.9921
+margin_right = 108.76
+margin_bottom = 31.9921
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Hint"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SignalButton" type="Button" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.695
+anchor_right = 0.5
+anchor_bottom = 0.695
+margin_left = 37.0
+margin_top = 1.23999
+margin_right = 119.0
+margin_bottom = 21.24
+focus_mode = 0
+enabled_focus_mode = 0
+text = "ShowSignal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="GUI"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="UserInfo" parent="." instance=ExtResource( 4 )]
+margin_left = 26.0
+margin_top = 15.0
+margin_right = 26.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( -564, 118 )
+
+[node name="UserInfo2" parent="." instance=ExtResource( 4 )]
+margin_left = 700.0
+margin_top = 17.0
+margin_right = 700.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( -564, 118 )
+
+[node name="UserInfo3" parent="." instance=ExtResource( 4 )]
+margin_left = 365.0
+margin_top = 17.0
+margin_right = 365.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( -564, 118 )
+
+[node name="UserInfo4" parent="." instance=ExtResource( 4 )]
+margin_left = 17.0
+margin_top = 584.0
+margin_right = 17.0
+margin_bottom = 584.0
+rect_pivot_offset = Vector2( -564, 118 )
+
+[connection signal="pressed" from="GUI/SendCardButton" to="GUI" method="_on_SendCardButton_pressed"]
+[connection signal="pressed" from="GUI/HintButton" to="GUI" method="_on_HintButton_pressed"]
+[connection signal="pressed" from="GUI/SignalButton" to="GUI" method="_on_SignalButton_pressed"]
