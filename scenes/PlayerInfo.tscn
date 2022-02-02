@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/card/signal.jpg" type="Texture" id=2]
+[ext_resource path="res://scripts/PlayerInfo.gd" type="Script" id=3]
 
-[node name="UserInfo" type="Control"]
+[node name="PlayerInfo" type="Control"]
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,7 +20,7 @@ __meta__ = {
 [node name="Card" parent="." instance=ExtResource( 1 )]
 position = Vector2( 225, 76 )
 
-[node name="Username" type="Label" parent="."]
+[node name="PlayerName" type="Label" parent="."]
 margin_left = 28.0
 margin_top = 84.0
 margin_right = 96.0
@@ -28,7 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cardnum" type="Label" parent="."]
+[node name="CardNum" type="Label" parent="."]
 margin_left = 29.0
 margin_top = 112.0
 margin_right = 97.0
@@ -44,6 +46,7 @@ scale = Vector2( 0.538462, 0.538462 )
 texture = ExtResource( 2 )
 
 [node name="Captain" type="Sprite" parent="."]
-position = Vector2( 101, 37 )
+visible = false
+position = Vector2( 64, 33 )
 scale = Vector2( 0.606508, 0.606508 )
 texture = ExtResource( 2 )

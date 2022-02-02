@@ -9,7 +9,6 @@ var first_card : String = ""
 
 # 构建公共卡牌区域 为方便集成功能专门独立
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_sorted_ids = GameManager.players.keys()
@@ -32,6 +31,9 @@ func _update_card_pos():
 remotesync func new_round()->void:
 	# 开启新回合
 	# 清空数据
+	# 展示上轮出牌
+	var old_cards : Array = _public_cards.values()
+	
 	_public_cards.clear()
 	first_card = ""
 	
@@ -39,6 +41,27 @@ remotesync func new_round()->void:
 	var cards : Array = $Cards.get_children()
 	for c in cards:
 		c.queue_free()
+	
+	cards.clear()
+	cards = $LastRound.get_children()
+	for c in cards:
+		c.queue_free()
+	
+	# 增加旧卡牌
+	for c in old_cards:
+		var card_instance = Card.instance()
+		card_instance.card_name = c
+		$LastRound.add_child(card_instance)
+	
+	# 调整旧卡牌位置及大小
+	cards.clear()
+	cards = $LastRound.get_children()
+	var total_card_width : float = cards[0].get_width() * 0.5 * cards.size() * 0.5
+	for i in range(cards.size()):
+		cards[i].position.x = - (total_card_width) * 0.5 + (total_card_width / cards.size()) * (i + 0.5)
+		cards[i].position.y = 100
+		cards[i].shrink_card()
+	
 	
 func calculate_winner()->int:
 	# 根据公共卡牌情况计算最大卡牌

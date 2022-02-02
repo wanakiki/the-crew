@@ -48,6 +48,11 @@ func destroy():
 func get_width():
 	return $Sprite.get_rect().size.x / 2
 	
+# 面积减半
+func shrink_card():
+	$Sprite.scale.x = 0.5
+	$Sprite.scale.y = 0.5
+
 # 检查鼠标是否在卡片上
 func check_mouse():
 	var mouseposition = get_local_mouse_position()
