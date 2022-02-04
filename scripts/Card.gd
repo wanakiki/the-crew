@@ -20,6 +20,8 @@ func _ready():
 func _process(_delta):
 	pass
 
+func change_card(card_name : String)->void:
+	$Sprite.texture = load(str("res://assets/card/", card_name, ".png"))
 
 func card_initialize():
 	$Sprite.texture = load(card_img)
@@ -30,6 +32,9 @@ func card_initialize():
 
 # 0-2对应底部到顶部信号，传递其他数字则全部隐藏
 func show_signal(kind):
+	$SignalTop.visible = false
+	$SignalMid.visible = false
+	$SignalBottom.visible = false
 	if kind == 0:
 		$SignalBottom.visible = true
 	elif kind == 1:
@@ -37,9 +42,7 @@ func show_signal(kind):
 	elif kind == 2:
 		$SignalTop.visible = true
 	else:
-		$SignalTop.visible = false
-		$SignalMid.visible = false
-		$SignalBottom.visible = false
+		pass
 
 
 func destroy():

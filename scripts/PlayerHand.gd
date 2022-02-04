@@ -85,3 +85,8 @@ func give_hint(cur_color):
 			break
 	move_card(card_index)
 	return card_index
+	
+func current_card()->String:
+	# 返回当前选中的卡牌名
+	print(_cards[select_card_index].card_name)
+	return _cards[select_card_index].card_name

@@ -19,6 +19,6 @@ func _ready():
 func set_captain()->void:
 	$Captain.show()
 
-func set_cardnum(n : int)->void:
-	# 应该修改为remotesync 需要规划GUI逻辑
-	pass
+func set_card_signal(signal_kind : int, card_name : String)->void:
+	$Card.change_card(card_name)
+	$Card.show_signal(signal_kind)

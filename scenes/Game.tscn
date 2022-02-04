@@ -73,6 +73,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TopButton" type="Button" parent="GUI" groups=["signal_buttons"]]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.695
+anchor_right = 0.5
+anchor_bottom = 0.695
+margin_left = 281.0
+margin_top = 4.23999
+margin_right = 363.0
+margin_bottom = 24.24
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Top"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiddleButton" type="Button" parent="GUI" groups=["signal_buttons"]]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.695
+anchor_right = 0.5
+anchor_bottom = 0.695
+margin_left = 404.0
+margin_top = 5.23999
+margin_right = 486.0
+margin_bottom = 25.24
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Middle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomButton" type="Button" parent="GUI" groups=["signal_buttons"]]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.695
+anchor_right = 0.5
+anchor_bottom = 0.695
+margin_left = 149.0
+margin_top = 2.23999
+margin_right = 231.0
+margin_bottom = 22.24
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Bottom"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Message" type="Label" parent="GUI"]
 visible = false
 anchor_top = 0.5
@@ -85,36 +136,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Players" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="UserInfo" parent="." instance=ExtResource( 4 )]
-margin_left = 26.0
-margin_top = 15.0
-margin_right = 26.0
-margin_bottom = 15.0
-rect_pivot_offset = Vector2( -564, 118 )
-
-[node name="UserInfo2" parent="." instance=ExtResource( 4 )]
-margin_left = 700.0
-margin_top = 17.0
-margin_right = 700.0
-margin_bottom = 17.0
-rect_pivot_offset = Vector2( -564, 118 )
-
-[node name="UserInfo3" parent="." instance=ExtResource( 4 )]
-margin_left = 365.0
-margin_top = 17.0
-margin_right = 365.0
-margin_bottom = 17.0
-rect_pivot_offset = Vector2( -564, 118 )
-
-[node name="UserInfo4" parent="." instance=ExtResource( 4 )]
-margin_left = 17.0
-margin_top = 584.0
-margin_right = 17.0
-margin_bottom = 584.0
-rect_pivot_offset = Vector2( -564, 118 )
+[node name="PlayerInfo" parent="GUI/Players" instance=ExtResource( 4 )]
+visible = false
+margin_left = 21.0
+margin_top = 14.0
+margin_right = 21.0
+margin_bottom = 14.0
 
 [connection signal="pressed" from="GUI/SendCardButton" to="GUI" method="_on_SendCardButton_pressed"]
 [connection signal="pressed" from="GUI/HintButton" to="GUI" method="_on_HintButton_pressed"]
 [connection signal="pressed" from="GUI/SignalButton" to="GUI" method="_on_SignalButton_pressed"]
+[connection signal="pressed" from="GUI/TopButton" to="GUI" method="_on_TopButton_pressed"]
+[connection signal="pressed" from="GUI/MiddleButton" to="GUI" method="_on_MiddleButton_pressed"]
+[connection signal="pressed" from="GUI/BottomButton" to="GUI" method="_on_BottomButton_pressed"]

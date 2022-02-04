@@ -79,15 +79,12 @@ remote func pre_start_game(cards : Array)->void:
 	# TODO 根据用户手牌是否包含black4决定是否启用出牌按钮 并分配领航员
 	if get_tree().is_network_server():
 		get_node("/root/Table/GUI/SendCardButton").set_disabled(false)
-	
-	# TODO 遍历数组创建用户信息面板
-	var user_info = load("res://scenes/UserInfo.tscn")
-	
-	
+
 	# 向服务器汇报客户端已准备好 如果只有一个玩家则直接开始游戏
 	if not get_tree().is_network_server():
 		rpc_id(1, "ready_to_start", get_tree().get_network_unique_id())
 	elif players.size() == 0:
+		# TODO 删除单用户测试代码
 		table.get_node("PlayerHand").setup(cards.slice(0, 9))
 		post_start_game()
 	
